@@ -6,5 +6,5 @@ export async function validateGetPost(request, postId, expectedTitle) {
     const data = await response.json();
     console.log(data);
     expect(data.title).toBe(expectedTitle);
-    //Get memthod
+    
 }
