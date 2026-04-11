@@ -42,7 +42,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testMatch:'tests/Home/*.spec.js',
+      testMatch:'tests/API/*.spec.js',
       fullyParallel:true,
     },
 
