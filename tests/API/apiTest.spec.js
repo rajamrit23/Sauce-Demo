@@ -43,4 +43,5 @@ test(`${testcaseNo()}'API Test Methods'`,{tag:'@API'}, async ({ request }) => {
 
     // DELETE
     await api.deletePost(request, 1);
+    //Assert
 });
