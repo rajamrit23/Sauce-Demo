@@ -22,6 +22,25 @@ test.afterAll(async()=>{
    await browserContext.close();
 });
 
-test(`${testcaseNo()}'API Test'`,{tag:'@API'}, async ({ request }) => {
+test(`${testcaseNo()}'API Test Methods'`,{tag:'@API'}, async ({ request }) => {
+    // GET
     await api.validateGetPost(request, 1, "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+
+    // POST
+    const newPostPayload = { title: 'foo', body: 'bar', userId: 1 };
+    const createdPost = await api.createPost(request, newPostPayload);
+    expect(createdPost.title).toBe('foo');
+
+    // PUT
+    const updatePayload = { id: 1, title: 'updated title', body: 'updated body', userId: 1 };
+    const updatedPost = await api.updatePost(request, 1, updatePayload);
+    expect(updatedPost.title).toBe('updated title');
+
+    // PATCH
+    const patchPayload = { title: 'patched title' };
+    const patchedPost = await api.patchPost(request, 1, patchPayload);
+    expect(patchedPost.title).toBe('patched title');
+
+    // DELETE
+    await api.deletePost(request, 1);
 });
